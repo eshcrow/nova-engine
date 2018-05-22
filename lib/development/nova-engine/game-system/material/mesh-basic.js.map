@@ -1,0 +1,1 @@
+{"version":3,"file":"mesh-basic.js","sourceRoot":"","sources":["../../../../../src/game-system/material/mesh-basic.ts"],"names":[],"mappings":";;AAMA,+BAAyE;AAEzE;IAGI;QACI,IAAI,CAAC,SAAS,GAAG,IAAI,KAAK,CAAC,iBAAiB,CAAC,EAAE,KAAK,EAAE,QAAQ,EAAE,CAAC,CAAC;IACtE,CAAC;IAED,IAAI,QAAQ;QACR,OAAO,IAAI,CAAC,SAAS,CAAC;IAC1B,CAAC;CACJ;AAVD,8BAUC"}

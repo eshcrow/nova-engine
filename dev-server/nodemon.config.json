@@ -1,0 +1,11 @@
+{
+    "verbose": true,
+    "restartable": "rs-server",
+    "watch": [
+        "./dev-server/server.js"
+    ],
+    "ignore": [
+        "./dev-server/index.html",
+        "./dev-server/client.js"
+    ]
+}

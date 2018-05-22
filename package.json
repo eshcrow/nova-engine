@@ -1,0 +1,99 @@
+{
+    "name": "nova-engine",
+    "version": "1.0.0-alpha",
+    "description": "3D Web Game Engine written with javascript based on ThreeJS",
+    "homepage": "https://github.com/SugarDarius/nova-engine#readme",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/SugarDarius/nova-engine.git"
+    },
+    "bugs": {
+        "url": "https://github.com/SugarDarius/nova-engine/issues"
+    },
+    "readmeFilename": "README.md",
+    "author": "Aurélien Dupays Dexemple <dupays.aurelien@gmail.com>",
+    "license": "MIT",
+    "engine": {
+        "node": ">=8.4.0",
+        "npm": ">=5.5.1"
+    },
+    "directories": {
+        "lib": "lib"
+    },
+    "main": "lib/releases/nova-engine/index.js",
+    "scripts": {
+        "start": "npm run engine:build:dev",
+        "engine:build:dev": "better-npm-run engine:build:dev",
+        "engine:test:run": "better-npm-run engine:test:run",
+        "engine:dev-server:run": "concurrently --kill-others \"npm run engine:dev-server:build\" \"npm run engine:dev-server:start\"",
+        "engine:dev-server:build": "better-npm-run engine:dev-server:build",
+        "engine:dev-server:start": "better-npm-run engine:dev-server:start"
+    },
+    "betterScripts": {
+        "engine:build:dev": {
+            "command": "tsc --watch",
+            "env": {
+                "NODE_PATH": "./src",
+                "NODE_ENV": "development"
+            }
+        },
+        "engine:test:run": {
+            "command": "jest",
+            "env": {
+                "NODE_PATH": "<rootDir>",
+                "NODE_ENV": "test"
+            }
+        },
+        "engine:dev-server:build": {
+            "command": "babel-node ./dev-webpack/dev.server.js",
+            "env": {
+                "NODE_PATH": "./dev-webpack",
+                "NODE_ENV": "development"
+            }
+        },
+        "engine:dev-server:start": {
+            "command": "nodemon --config ./dev-server/nodemon.config.json ./dev-server/server.js --exec babel-node",
+            "env": {
+                "NODE_PATH": "./dev-server",
+                "NODE_ENV": "development"
+            }
+        }
+    },
+    "jest": {
+        "verbose": true,
+        "moduleFileExtensions": [
+            "ts",
+            "js"
+        ],
+        "transform": {
+            "^.+\\.ts$": "<rootDir>/config/test-preprocessor.js"
+        },
+        "testMatch": [
+            "**/__tests__/*.+(ts|js)"
+        ]
+    },
+    "dependencies": {
+        "better-npm-run": "^0.1.0",
+        "three": "^0.92.0",
+        "typescript": "^2.8.3",
+        "uuid": "^3.2.1"
+    },
+    "devDependencies": {
+        "@types/jest": "^22.2.3",
+        "@types/three": "^0.91.12",
+        "@types/uuid": "^3.4.3",
+        "babel-cli": "^6.26.0",
+        "babel-loader": "^7.1.4",
+        "babel-preset-airbnb": "^2.4.0",
+        "babel-preset-env": "^1.7.0",
+        "babel-preset-stage-2": "^6.24.1",
+        "chalk": "^2.4.1",
+        "concurrently": "^3.5.1",
+        "express": "^4.16.3",
+        "jest": "^22.4.3",
+        "moment": "^2.22.1",
+        "webpack": "^4.8.3",
+        "webpack-dev-middleware": "^3.1.3",
+        "webpack-hot-middleware": "^2.22.2"
+    }
+}
