@@ -65,7 +65,7 @@ export class Loop<T extends Game> implements ILifecycle {
                 loops = loops + 1;
             }
 
-            interpolation =  (Time.getDeltaTime() + SKIP_TICKS - this._nextTickCount) / SKIP_TICKS;
+            interpolation = (Time.getDeltaTime() + SKIP_TICKS - this._nextTickCount) / SKIP_TICKS;
             this.render(interpolation);
 
             requestAnimationFrame(() => { this.run() });

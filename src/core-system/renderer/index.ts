@@ -11,6 +11,7 @@ export class Renderer {
 
     constructor() {
         this._instance = new Three.WebGLRenderer({ antialias: true });
+        this._instance.setClearColor(0xFFFFFF, 1);
     }
 
     get instance(): Three.WebGLRenderer {
