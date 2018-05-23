@@ -4,10 +4,10 @@
 *   author: Aurélien Dupays Dexemple
 */
 
-import { BoxPrimitive }                                     from './box-primitive';
+import { PrimitiveBox }                                     from './primitive-box';
 
-export type GemotryTypes = BoxPrimitive;
+export type GemotryTypes = PrimitiveBox;
 
 export {
-    BoxPrimitive
+    PrimitiveBox
 };

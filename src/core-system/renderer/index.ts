@@ -10,7 +10,7 @@ export class Renderer {
     private _instance: Three.WebGLRenderer;
 
     constructor() {
-        this._instance = new Three.WebGLRenderer();
+        this._instance = new Three.WebGLRenderer({ antialias: true });
     }
 
     get instance(): Three.WebGLRenderer {
@@ -29,7 +29,7 @@ export class Renderer {
         domTarget.appendChild(this._instance.domElement);
     }
 
-    public render(scene: Three.Scene, camera: Three.Camera): void {
+    public render(scene: Three.Scene, camera: Three.Camera, interpolation: number): void {
         this._instance.render(scene, camera);
     }
 }

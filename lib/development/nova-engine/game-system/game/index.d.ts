@@ -11,6 +11,7 @@ export declare class Game implements ILifecycle {
     private _height;
     private _camera;
     private _scene;
+    private _paused;
     constructor(domTarget?: HTMLElement, devicePixelRatio?: number, width?: number, height?: number);
     readonly domTarget: HTMLElement;
     readonly devicePixelRatio: number;
@@ -18,6 +19,7 @@ export declare class Game implements ILifecycle {
     readonly height: number;
     readonly camera: CameraTypes;
     readonly scene: Scene;
+    paused: boolean;
     awake(): void;
     start(): void;
     update(): void;

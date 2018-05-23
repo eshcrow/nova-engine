@@ -4,10 +4,10 @@
 *   author: Aurélien Dupays Dexemple
 */
 
-import { MeshBasic }                                        from './mesh-basic';
+import { BasicMesh }                                        from './basic-mesh';
 
-export type MaterialTypes = MeshBasic;
+export type MaterialTypes = BasicMesh;
 
 export {
-    MeshBasic
+    BasicMesh
 };

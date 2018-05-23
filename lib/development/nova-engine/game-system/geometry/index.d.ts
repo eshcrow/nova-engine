@@ -1,3 +1,3 @@
-import { BoxPrimitive } from './box-primitive';
-export declare type GemotryTypes = BoxPrimitive;
-export { BoxPrimitive };
+import { PrimitiveBox } from './primitive-box';
+export declare type GemotryTypes = PrimitiveBox;
+export { PrimitiveBox };

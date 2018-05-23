@@ -6,5 +6,5 @@ export declare class Renderer {
     setPixelRatio(devicePixelRatio: number): void;
     setSize(width: number, height: number): void;
     setDomTarget(domTarget: HTMLElement): void;
-    render(scene: Three.Scene, camera: Three.Camera): void;
+    render(scene: Three.Scene, camera: Three.Camera, interpolation: number): void;
 }

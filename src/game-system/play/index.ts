@@ -11,5 +11,5 @@ export function Play<T extends Game>(GameCtr: IGameConstuctor<T>): void {
     const loop = new Loop(GameCtr);
 
     loop.awake();
-    loop.render(0);
+    loop.start();
 }

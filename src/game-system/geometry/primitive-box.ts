@@ -1,12 +1,12 @@
 
 /*
-*   NovaEngine - GameSystem - Geometry - BoxPrimitive
+*   NovaEngine - GameSystem - Geometry - PrimitiveBox
 *   author: Aurélien Dupays Dexemple
 */
 
 import * as Three                                           from 'three';
 
-export class BoxPrimitive {
+export class PrimitiveBox {
     private _instance: Three.BoxGeometry;
 
     constructor(width: number = 1, height: number = 1, depth: number = 1) {

@@ -9,23 +9,23 @@ import { Time, Renderer }                                   from '../../core-sys
 import { ILifecycle }                                       from '../lifecycle';
 import { IGameConstuctor, Game }                            from '../game';
 
-export enum LoopSettings {
-    TICKS_PER_SECOND = 25,
-    SKIP_TICKS = 1000 / 25,
-    MAX_FRAMESKIP = 5
-}
+const TICKS_PER_SECOND          = 25;
+const SKIP_TICKS                = 1000 / TICKS_PER_SECOND;
+const MAX_FRAMESKIP             = 5;
 
 export class Loop<T extends Game> implements ILifecycle {
-
     private _running: boolean = false;
-    private _nextTickCount: number = 0;
 
     private _game: T;
     private _renderer: Renderer;
 
+    private _nextTickCount: number = 0.0;
+
     constructor(GameCtr: IGameConstuctor<T>) {
         this._renderer = new Renderer();
         this._game = new GameCtr();
+
+        Time.start();
     }
 
     public awake(): void {
@@ -37,47 +37,38 @@ export class Loop<T extends Game> implements ILifecycle {
     }
 
     public start(): void {
-        Time.start();
+        this._game.start();
+        this._running = !this._game.paused;
 
-        this._running = true;
-        this.run();
+        this._nextTickCount = Time.getElapsedTime();
+
+        requestAnimationFrame(() => { this.run() });
     }
 
     public update(): void {
-
+        this._game.update();
     }
 
-    public render(interpolation: number): void {
-        this._renderer.render(this._game.scene.instance, this._game.camera.instance);
+    private render(interpolation: number): void {
+        this._renderer.render(this._game.scene.instance, this._game.camera.instance, interpolation);
     }
 
-    public run(): void {
-        this._nextTickCount = Time.getElapsedTime();
-
-        while (this._running) {
+    private run(): void {
+        if (this._running) {
             let loops: number = 0;
+            let interpolation: number = 0;
 
-            while (Time.getDeltaTime() > this._nextTickCount && loops < LoopSettings.MAX_FRAMESKIP) {
+            while (Time.getElapsedTime() > this._nextTickCount && loops < MAX_FRAMESKIP) {
                 this.update();
 
-                this._nextTickCount = this._nextTickCount + LoopSettings.SKIP_TICKS;
-                loops =  loops + 1;
+                this._nextTickCount = this._nextTickCount + SKIP_TICKS;
+                loops = loops + 1;
             }
 
-            const interpolation: number = (Time.getElapsedTime() + LoopSettings.SKIP_TICKS - this._nextTickCount ) / LoopSettings.SKIP_TICKS;
-
+            interpolation =  (Time.getDeltaTime() + SKIP_TICKS - this._nextTickCount) / SKIP_TICKS;
             this.render(interpolation);
+
+            requestAnimationFrame(() => { this.run() });
         }
-    }
-
-    public pause(paused: boolean): void {
-        this._running = paused;
-        this._running === false && this.run();
-    }
-
-    public stop(): void {
-        this._running = false;
-
-        Time.stop();
     }
 }

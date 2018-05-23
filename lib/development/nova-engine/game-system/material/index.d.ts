@@ -1,3 +1,3 @@
-import { MeshBasic } from './mesh-basic';
-export declare type MaterialTypes = MeshBasic;
-export { MeshBasic };
+import { BasicMesh } from './basic-mesh';
+export declare type MaterialTypes = BasicMesh;
+export { BasicMesh };

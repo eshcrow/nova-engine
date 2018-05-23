@@ -18,10 +18,14 @@ export class Time {
     }
 
     static getDeltaTime(): number {
-        return this._instance.getDelta();
+        return this._instance.getDelta() * 1000;
     }
 
     static getElapsedTime(): number {
-        return this._instance.getElapsedTime();
+        return this._instance.getElapsedTime() * 1000;
+    }
+
+    static now(): number {
+        return performance.now();
     }
 }

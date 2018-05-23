@@ -4,4 +4,5 @@ export declare class Time {
     static stop(): void;
     static getDeltaTime(): number;
     static getElapsedTime(): number;
+    static now(): number;
 }

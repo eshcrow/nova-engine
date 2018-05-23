@@ -1,10 +1,4 @@
 
-// let geometry = new Three.BoxGeometry( 1, 1, 1 );
-// let material = new Three.MeshBasicMaterial( { color: 0x00ff00 } );
-// let cube = new Three.Mesh( geometry, material );
-//
-// this._scene.add( cube );
-
 import {
     Game,
     Script,
@@ -15,18 +9,39 @@ import {
     Play
 }                                                   from '../lib/development/nova-engine';
 
+let index = 0;
+
 class MyGame extends Game {
+    constructor() {
+        super();
+
+        this.cube = null;
+    }
+
     awake() {
-        console.log('I m awake');
-        const geometry = new Geometry.BoxPrimitive(1, 1, 1);
-        const material = new Material.MeshBasic();
+        console.log('game awake');
+        const geometry = new Geometry.PrimitiveBox(1, 1, 1);
+        const material = new Material.BasicMesh();
 
         const mesh = new Mesh(geometry, material);
 
-        const cube = new Object3D(mesh, 'cube');
+        this.cube = new Object3D(mesh, 'cube');
 
-        this.scene.add(cube);
+        this.scene.add(this.cube);
+    }
+
+    start() {
+        console.log('game start');
+    }
+
+    update() {
+        console.log('game update', index++);
+        this.cube.rotation.x += 0.01;
     }
 }
 
 Play(MyGame);
+
+if (module.hot) {
+
+}

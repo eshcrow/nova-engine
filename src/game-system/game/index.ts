@@ -28,6 +28,8 @@ export class Game implements ILifecycle {
     private _camera: CameraTypes;
     private _scene: Scene;
 
+    private _paused: boolean;
+
     constructor(domTarget: HTMLElement = document.body, devicePixelRatio: number = window.devicePixelRatio, width: number = window.innerWidth, height = window.innerHeight) {
         this._domTarget = domTarget;
         this._devicePixelRatio = devicePixelRatio;
@@ -39,6 +41,8 @@ export class Game implements ILifecycle {
         this._scene = new Scene();
 
         this._camera.setDefaultPosition(new Mathematics.Vector3(0, 0, 5));
+
+        this._paused = false;
     }
 
     get domTarget(): HTMLElement {
@@ -65,7 +69,17 @@ export class Game implements ILifecycle {
         return this._scene;
     }
 
+    get paused(): boolean {
+        return this._paused;
+    }
+
+    set paused(paused: boolean) {
+        this._paused = paused;
+    }
+
     public awake(): void { }
+
     public start(): void { }
+
     public update(): void { }
 }
