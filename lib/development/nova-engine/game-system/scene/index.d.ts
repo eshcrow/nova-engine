@@ -1,9 +1,12 @@
 import * as Three from 'three';
+import { Color } from '../color';
 import { Object3D } from '../object-3d';
 export declare class Scene {
+    private _id;
+    private _name;
     private _instance;
-    constructor();
+    constructor(name?: string);
     readonly instance: Three.Scene;
-    setName(name: string): void;
+    setBackground(color: Color): void;
     add(object3d: Object3D): void;
 }

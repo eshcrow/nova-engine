@@ -13,3 +13,5 @@ export function Play<T extends Game>(GameCtr: IGameConstuctor<T>): void {
     loop.awake();
     loop.start();
 }
+
+// to become launcher with options and destrow methods

@@ -3,13 +3,12 @@ import {
     Game,
     Script,
     Geometry,
+    Color,
     Material,
     Mesh,
     Object3D,
     Play
 }                                                   from '../lib/development/nova-engine';
-
-let index = 0;
 
 class MyGame extends Game {
     constructor() {
@@ -21,7 +20,7 @@ class MyGame extends Game {
     awake() {
         console.log('game awake');
         const geometry = new Geometry.PrimitiveBox(1, 1, 1);
-        const material = new Material.BasicMesh();
+        const material = new Material.BasicMesh(new Color(0x12E5F5, true));
 
         const mesh = new Mesh(geometry, material);
 
@@ -35,7 +34,6 @@ class MyGame extends Game {
     }
 
     update() {
-        console.log('game update', index++);
         this.cube.rotation.x += 0.01;
     }
 }

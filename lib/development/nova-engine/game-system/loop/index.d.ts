@@ -6,6 +6,7 @@ export declare class Loop<T extends Game> implements ILifecycle {
     private _renderer;
     private _nextTickCount;
     constructor(GameCtr: IGameConstuctor<T>);
+    private setUpRenderer();
     awake(): void;
     start(): void;
     update(): void;

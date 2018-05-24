@@ -11,11 +11,14 @@ export class Renderer {
 
     constructor() {
         this._instance = new Three.WebGLRenderer({ antialias: true });
-        this._instance.setClearColor(0xFFFFFF, 1);
     }
 
     get instance(): Three.WebGLRenderer {
         return this._instance;
+    }
+
+    public setClearColor(color: number): void {
+        this._instance.setClearColor(color, 1);
     }
 
     public setPixelRatio(devicePixelRatio: number): void {

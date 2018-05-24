@@ -6,6 +6,8 @@
 
 import { Mathematics }                                      from '../../core-system';
 
+import { Color }                                            from '../color';
+
 import { ILifecycle }                                       from '../lifecycle';
 
 import { CameraTypes, Camera }                              from '../camera';
@@ -37,10 +39,11 @@ export class Game implements ILifecycle {
         this._width = width;
         this._height = height;
 
-        this._camera = new Camera.Perspective();
-        this._scene = new Scene();
+        this._camera = new Camera.Perspective('Main Camera');
+        this._scene = new Scene('Main Scene');
 
         this._camera.setDefaultPosition(new Mathematics.Vector3(0, 0, 5));
+        this._scene.setBackground(new Color(0x2B3233));
 
         this._paused = false;
     }

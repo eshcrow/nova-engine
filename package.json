@@ -27,7 +27,8 @@
         "engine:test:run": "better-npm-run engine:test:run",
         "engine:dev-server:run": "concurrently --kill-others \"npm run engine:dev-server:build\" \"npm run engine:dev-server:start\"",
         "engine:dev-server:build": "better-npm-run engine:dev-server:build",
-        "engine:dev-server:start": "better-npm-run engine:dev-server:start"
+        "engine:dev-server:start": "better-npm-run engine:dev-server:start",
+        "engine:dev-desktop-app:run": "better-npm-run engine:dev-desktop-app:run"
     },
     "betterScripts": {
         "engine:build:dev": {
@@ -55,6 +56,13 @@
             "command": "nodemon --config ./dev-server/nodemon.config.json ./dev-server/server.js --exec babel-node",
             "env": {
                 "NODE_PATH": "./dev-server",
+                "NODE_ENV": "development"
+            }
+        },
+        "engine:dev-desktop-app:run": {
+            "command": "electron -r babel-register ./dev-desktop/app.ts",
+            "env": {
+                "NODE_PATH": "./dev-desktop/",
                 "NODE_ENV": "development"
             }
         }
@@ -89,6 +97,7 @@
         "babel-preset-stage-2": "^6.24.1",
         "chalk": "^2.4.1",
         "concurrently": "^3.5.1",
+        "electron": "^2.0.2",
         "express": "^4.16.3",
         "jest": "^22.4.3",
         "moment": "^2.22.1",

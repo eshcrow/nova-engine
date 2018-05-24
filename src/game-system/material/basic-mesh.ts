@@ -6,13 +6,15 @@
 
 import * as Three                                           from 'three';
 
+import { Color }                                            from '../color';
+
 export class BasicMesh {
     private _instance: Three.MeshBasicMaterial;
 
-    constructor() {
+    constructor(color?: Color, wireframe?: boolean) {
         this._instance = new Three.MeshBasicMaterial({
-            color: 0x00ff00,
-            wireframe: true 
+            color: color ? color.getHex() : 0x13EFFF,
+            wireframe: wireframe || true
         });
     }
 

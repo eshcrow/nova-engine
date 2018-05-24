@@ -1,6 +1,6 @@
 
 /*
-*   NovaEngine - CoreSystem - Loop
+*   NovaEngine - GameSystem - Loop
 *   author: Aurélien Dupays Dexemple
 */
 
@@ -25,13 +25,20 @@ export class Loop<T extends Game> implements ILifecycle {
         this._renderer = new Renderer();
         this._game = new GameCtr();
 
-        Time.start();
+        this.setUpRenderer();
+    }
+
+    private setUpRenderer(): void {
+        this._renderer.setDomTarget(this._game.domTarget);
+
+        this._renderer.setPixelRatio(this._game.devicePixelRatio);
+        this._renderer.setSize(this._game.width, this._game.height);
+
+        this._renderer.setClearColor(0xffffff);
     }
 
     public awake(): void {
-        this._renderer.setDomTarget(this._game.domTarget);
-        this._renderer.setPixelRatio(this._game.devicePixelRatio);
-        this._renderer.setSize(this._game.width, this._game.height);
+        Time.start();
 
         this._game.awake();
     }

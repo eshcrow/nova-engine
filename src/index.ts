@@ -8,6 +8,7 @@ import { version, Mathematics }                             from './core-system'
 import {
     Game,
     Script,
+    Color,
     Geometry,
     Material,
     Mesh,
@@ -23,6 +24,7 @@ export {
     Game,
     Script,
 
+    Color,
     Geometry,
     Material,
     Mesh,
