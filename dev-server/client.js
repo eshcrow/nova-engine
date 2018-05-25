@@ -34,7 +34,7 @@ class CubixGame extends Game {
     }
 
     update() {
-        this.cube.rotation.x += 0.01;
+        this.cube.rotation.y += 0.05;
     }
 }
 

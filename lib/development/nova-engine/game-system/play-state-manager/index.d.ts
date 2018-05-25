@@ -6,7 +6,6 @@ export interface PlayStateOptions {
 }
 export declare class PlayStateManager<T extends Game> {
     private _boot;
-    private _booted;
     constructor(GameCtr: GameConstuctor<T>, options?: PlayStateOptions);
     play(): void;
     stop(): void;
