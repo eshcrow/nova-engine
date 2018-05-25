@@ -71,7 +71,7 @@ export class Loop<T extends Game> implements ILifecycle {
 
         this._nextTickCount = Time.getElapsedTime();
 
-        requestAnimationFrame(() => { this.run() });
+        this._rafId = requestAnimationFrame(() => { this.run() });
     }
 
     public update(): void {
