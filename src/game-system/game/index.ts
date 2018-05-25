@@ -39,7 +39,7 @@ export class Game implements ILifecycle {
         this._width = width;
         this._height = height;
 
-        this._camera = new Camera.Perspective('Main Camera');
+        this._camera = new Camera.Perspective((width / height), 'Main Camera');
         this._scene = new Scene('Main Scene');
 
         this._camera.setDefaultPosition(new Mathematics.Vector3(0, 0, 5));
@@ -74,6 +74,14 @@ export class Game implements ILifecycle {
 
     get paused(): boolean {
         return this._paused;
+    }
+
+    set width(width: number) {
+        this._width = width;
+    }
+
+    set height(height: number) {
+        this._height = height;
     }
 
     set paused(paused: boolean) {

@@ -13,6 +13,11 @@ const TICKS_PER_SECOND          = 25;
 const SKIP_TICKS                = 1000 / TICKS_PER_SECOND;
 const MAX_FRAMESKIP             = 5;
 
+export enum WindowResizeEvents {
+    Add = 0,
+    Remove = 1
+}
+
 export class Loop<T extends Game> implements ILifecycle {
     private _running: boolean = false;
 
@@ -27,6 +32,7 @@ export class Loop<T extends Game> implements ILifecycle {
         this._game = new GameCtr();
 
         this.setUpRenderer();
+        this.setWindowResizEventState(WindowResizeEvents.Add);
     }
 
     private setUpRenderer(): void {
@@ -36,6 +42,21 @@ export class Loop<T extends Game> implements ILifecycle {
         this._renderer && this._renderer.setSize(this._game.width, this._game.height);
 
         this._renderer && this._renderer.setClearColor(0xffffff);
+    }
+
+    private updateRendererAndCameraOnWindowResize(): void {
+        this._game.width = window.innerWidth;
+        this._game.height = window.innerHeight;
+
+        this._game.camera.setAspect(this._game.width / this._game.height);
+        this._game.camera.updateProjectionMatrix();
+
+        this._renderer && this._renderer.setSize(this._game.width, this._game.height);
+    }
+
+    private setWindowResizEventState(state: WindowResizeEvents): void {
+        state === 0 && window.addEventListener('resize', () => { this.updateRendererAndCameraOnWindowResize() });
+        state === 1 && window.removeEventListener('resize', () => { this.updateRendererAndCameraOnWindowResize() });
     }
 
     public awake(): void {
@@ -92,6 +113,7 @@ export class Loop<T extends Game> implements ILifecycle {
             this._renderer = null;
 
             cancelAnimationFrame(this._rafId);
+            this.setWindowResizEventState(WindowResizeEvents.Remove);
         }
     }
 }

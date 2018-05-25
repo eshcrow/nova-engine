@@ -15,11 +15,11 @@ export class Perspective {
 
     private _instance: Three.PerspectiveCamera;
 
-    constructor(name?: string) {
+    constructor(aspect: number, name?: string) {
         this._id = uuid();
         this._name = name || `unknown-camera-${this._id}`;
 
-        this._instance = new Three.PerspectiveCamera(75, (window.innerWidth / window.innerHeight), 0.1, 1000);
+        this._instance = new Three.PerspectiveCamera(75, aspect, 0.1, 1000);
     }
 
     get instance(): Three.PerspectiveCamera {
@@ -46,5 +46,9 @@ export class Perspective {
 
     public setFar(far: number): void {
         this._instance.far = far;
+    }
+
+    public updateProjectionMatrix(): void {
+        this._instance.updateProjectionMatrix();
     }
 }
