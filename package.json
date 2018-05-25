@@ -22,16 +22,16 @@
     },
     "main": "lib/releases/nova-engine/index.js",
     "scripts": {
-        "start": "npm run engine:build:dev",
-        "engine:build:dev": "better-npm-run engine:build:dev",
+        "start": "npm run engine:dev:build",
+        "engine:dev:build": "better-npm-run engine:dev:build",
         "engine:test:run": "better-npm-run engine:test:run",
-        "engine:dev-server:run": "concurrently --kill-others \"npm run engine:dev-server:build\" \"npm run engine:dev-server:start\"",
-        "engine:dev-server:build": "better-npm-run engine:dev-server:build",
-        "engine:dev-server:start": "better-npm-run engine:dev-server:start",
-        "engine:dev-desktop-app:run": "better-npm-run engine:dev-desktop-app:run"
+        "engine:dev:app-server:start": "concurrently --kill-others \"npm run engine:dev:app-server:build\" \"npm run engine:dev:app-server:run\"",
+        "engine:dev:app-server:build": "better-npm-run engine:dev:app-server:build",
+        "engine:dev:app-server:run": "better-npm-run engine:dev:app-server:run",
+        "engine:dev:app-desktop:run": "better-npm-run engine:dev:app-desktop:run"
     },
     "betterScripts": {
-        "engine:build:dev": {
+        "engine:dev:build": {
             "command": "tsc --watch",
             "env": {
                 "NODE_PATH": "./src",
@@ -45,21 +45,21 @@
                 "NODE_ENV": "test"
             }
         },
-        "engine:dev-server:build": {
+        "engine:dev:app-server:build": {
             "command": "babel-node ./dev-webpack/dev.server.js",
             "env": {
                 "NODE_PATH": "./dev-webpack",
                 "NODE_ENV": "development"
             }
         },
-        "engine:dev-server:start": {
+        "engine:dev:app-server:run": {
             "command": "nodemon --config ./dev-server/nodemon.config.json ./dev-server/server.js --exec babel-node",
             "env": {
                 "NODE_PATH": "./dev-server",
                 "NODE_ENV": "development"
             }
         },
-        "engine:dev-desktop-app:run": {
+        "engine:dev:app-desktop:run": {
             "command": "electron -r babel-register ./dev-desktop/app.ts",
             "env": {
                 "NODE_PATH": "./dev-desktop/",

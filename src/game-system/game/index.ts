@@ -15,7 +15,7 @@ import { Scene }                                            from '../scene';
 
 import * as Three                                           from 'three';
 
-export interface IGameConstuctor<T> {
+export interface GameConstuctor<T> {
     new(): T
 }
 

@@ -7,10 +7,10 @@ import {
     Material,
     Mesh,
     Object3D,
-    Play
+    PlayStateManager
 }                                                   from '../lib/development/nova-engine';
 
-class MyGame extends Game {
+class CubixGame extends Game {
     constructor() {
         super();
 
@@ -38,8 +38,14 @@ class MyGame extends Game {
     }
 }
 
-Play(MyGame);
+const cubixPlayManager = new PlayStateManager(CubixGame);
+cubixPlayManager.play();
 
 if (module.hot) {
+    module.hot.accept();
 
+    module.hot.dispose(() => {
+        cubixPlayManager.stop();
+        cubixPlayManager.destroy();
+    })
 }

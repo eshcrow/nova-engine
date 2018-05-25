@@ -26,8 +26,6 @@ app.setName('Nova Engine');
 app.on('ready', () => {
     mainDesktopWindow = createDesktopWindow();
 
-    Menu.setApplicationMenu(Menu.buildFromTemplate([{label: 'Nova Engine'}]));
-
     mainDesktopWindow.maximize();
     mainDesktopWindow.show();
 

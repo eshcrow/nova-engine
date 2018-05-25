@@ -1,7 +1,7 @@
 import { ILifecycle } from '../lifecycle';
 import { CameraTypes } from '../camera';
 import { Scene } from '../scene';
-export interface IGameConstuctor<T> {
+export interface GameConstuctor<T> {
     new (): T;
 }
 export declare class Game implements ILifecycle {

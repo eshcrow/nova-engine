@@ -1,2 +1,8 @@
 import { IGameConstuctor, Game } from '../game';
-export declare function Play<T extends Game>(GameCtr: IGameConstuctor<T>): void;
+export interface PlayOptions {
+    autostart?: boolean;
+}
+export declare class PlayManager<T extends Game> {
+    private _autostart;
+    static boot<T>(GameCtr: IGameConstuctor<T>, options?: PlayOptions): void;
+}

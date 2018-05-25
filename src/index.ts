@@ -13,7 +13,7 @@ import {
     Material,
     Mesh,
     Object3D,
-    Play
+    PlayStateManager
 }                                                           from './game-system';
 
 export {
@@ -30,5 +30,5 @@ export {
     Mesh,
     Object3D,
 
-    Play
+    PlayStateManager
 };

@@ -7,7 +7,7 @@
 import { Time, Renderer }                                   from '../../core-system';
 
 import { ILifecycle }                                       from '../lifecycle';
-import { IGameConstuctor, Game }                            from '../game';
+import { GameConstuctor, Game }                             from '../game';
 
 const TICKS_PER_SECOND          = 25;
 const SKIP_TICKS                = 1000 / TICKS_PER_SECOND;
@@ -17,11 +17,12 @@ export class Loop<T extends Game> implements ILifecycle {
     private _running: boolean = false;
 
     private _game: T;
-    private _renderer: Renderer;
+    private _renderer: Renderer | null;
 
     private _nextTickCount: number = 0.0;
+    private _rafId: number = 0;
 
-    constructor(GameCtr: IGameConstuctor<T>) {
+    constructor(GameCtr: GameConstuctor<T>) {
         this._renderer = new Renderer();
         this._game = new GameCtr();
 
@@ -29,12 +30,12 @@ export class Loop<T extends Game> implements ILifecycle {
     }
 
     private setUpRenderer(): void {
-        this._renderer.setDomTarget(this._game.domTarget);
+        this._renderer && this._renderer.setDomTarget(this._game.domTarget);
 
-        this._renderer.setPixelRatio(this._game.devicePixelRatio);
-        this._renderer.setSize(this._game.width, this._game.height);
+        this._renderer && this._renderer.setPixelRatio(this._game.devicePixelRatio);
+        this._renderer && this._renderer.setSize(this._game.width, this._game.height);
 
-        this._renderer.setClearColor(0xffffff);
+        this._renderer && this._renderer.setClearColor(0xffffff);
     }
 
     public awake(): void {
@@ -54,10 +55,11 @@ export class Loop<T extends Game> implements ILifecycle {
 
     public update(): void {
         this._game.update();
+        this._running = !this._game.paused;
     }
 
     private render(interpolation: number): void {
-        this._renderer.render(this._game.scene.instance, this._game.camera.instance, interpolation);
+        this._renderer && this._renderer.render(this._game.scene.instance, this._game.camera.instance, interpolation);
     }
 
     private run(): void {
@@ -75,7 +77,21 @@ export class Loop<T extends Game> implements ILifecycle {
             interpolation = (Time.getDeltaTime() + SKIP_TICKS - this._nextTickCount) / SKIP_TICKS;
             this.render(interpolation);
 
-            requestAnimationFrame(() => { this.run() });
+            this._rafId = requestAnimationFrame(() => { this.run() });
+        }
+    }
+
+    public stop(): void {
+        this._running = false;
+        Time.stop();
+    }
+
+    public destroy(): void {
+        if (!this._running) {
+            this._renderer && this._renderer.destroy(this._game.domTarget);
+            this._renderer = null;
+
+            cancelAnimationFrame(this._rafId);
         }
     }
 }

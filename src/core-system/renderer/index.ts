@@ -36,4 +36,9 @@ export class Renderer {
     public render(scene: Three.Scene, camera: Three.Camera, interpolation: number): void {
         this._instance.render(scene, camera);
     }
+
+    public destroy(domTarget: HTMLElement): void {
+        this._instance.forceContextLoss();
+        domTarget.removeChild(document.getElementsByTagName('canvas')[0]);
+    }
 }

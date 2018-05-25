@@ -6,7 +6,7 @@
 
 import { Game  }                                            from './game';
 import { Script }                                           from './script';
-import { Play }                                             from './play';
+import { PlayStateManager }                                 from './play-state-manager';
 
 import { Color }                                            from './color';
 
@@ -24,5 +24,5 @@ export {
     Material,
     Mesh,
     Object3D,
-    Play
+    PlayStateManager
 };
