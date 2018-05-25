@@ -5,26 +5,23 @@
 */
 
 import { GameConstuctor, Game }                             from '../game';
-import { Boot }                                             from '../boot';
+import { Boot, BootOptions }                                from '../boot';
 
 export interface PlayStateOptions {
     autoplay?: boolean;
+    boot?: BootOptions
 };
 
 export class PlayStateManager<T extends Game> {
-    private _autoplay: boolean = false;
 
     private _boot: Boot<T>;
     private _booted: boolean = false;
 
     public constructor(GameCtr: GameConstuctor<T>, options?: PlayStateOptions) {
         this._boot = new Boot(GameCtr);
-
-        this._autoplay = options && options.autoplay ? options.autoplay : this._autoplay;
-
         this._booted = true;
 
-        this._autoplay && this.play();
+        (options && options.autoplay) && this.play();
     }
 
     public play(): void {

@@ -7,6 +7,10 @@
 import { GameConstuctor, Game }                             from '../game';
 import { Loop }                                             from '../loop';
 
+export interface BootOptions {
+    debug: boolean;
+}
+
 export class Boot<T extends Game> {
     private _loop: Loop<T>;
 
