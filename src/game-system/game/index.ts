@@ -15,6 +15,12 @@ import { Scene }                                            from '../scene';
 
 import * as Three                                           from 'three';
 
+export interface GameHelpers {
+    camera?: Three.CameraHelper;
+    grid?: Three.GridHelper;
+    pointLight?: Three.PointLightHelper
+}
+
 export interface GameConstuctor<T> {
     new(): T
 }
@@ -32,14 +38,14 @@ export class Game implements ILifecycle {
 
     private _paused: boolean;
 
-    constructor(domTarget: HTMLElement = document.body, devicePixelRatio: number = window.devicePixelRatio, width: number = window.innerWidth, height = window.innerHeight) {
-        this._domTarget = domTarget;
-        this._devicePixelRatio = devicePixelRatio;
+    constructor(helpers?: GameHelpers) {
+        this._domTarget = document.body;
+        this._devicePixelRatio = window.devicePixelRatio;
 
-        this._width = width;
-        this._height = height;
+        this._width = window.innerWidth;
+        this._height = window.innerHeight;
 
-        this._camera = new Camera.Perspective((width / height), 'Main Camera');
+        this._camera = new Camera.Perspective((window.innerWidth / window.innerHeight), 'Main Camera');
         this._scene = new Scene('Main Scene');
 
         this._camera.setDefaultPosition(new Mathematics.Vector3(0, 0, 5));

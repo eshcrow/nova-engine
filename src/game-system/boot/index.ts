@@ -4,12 +4,14 @@
 *   author: Aurélien Dupays Dexemple
 */
 
-import { GameConstuctor, Game }                             from '../game';
-import { Loop }                                             from '../loop';
+import { GameHelpers, GameConstuctor, Game }                from '../game';
+import { LoopMetrics, Loop }                                from '../loop';
 
 export interface BootOptions {
     debug?: boolean;
-    metrics?: boolean;
+    metrics?: LoopMetrics;
+    helpers?: GameHelpers;
+    verbose?: boolean;
 }
 
 export class Boot<T extends Game> {

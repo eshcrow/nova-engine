@@ -18,6 +18,11 @@ export enum WindowResizeEvents {
     Remove = 1
 }
 
+export interface LoopMetrics {
+    memory?: boolean;
+    framerate?: boolean;
+}
+
 export class Loop<T extends Game> implements ILifecycle {
     private _running: boolean = false;
 

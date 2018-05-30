@@ -1,7 +1,10 @@
-import { GameConstuctor, Game } from '../game';
+import { GameHelpers, GameConstuctor, Game } from '../game';
+import { LoopMetrics } from '../loop';
 export interface BootOptions {
     debug?: boolean;
-    metrics?: boolean;
+    metrics?: LoopMetrics;
+    helpers?: GameHelpers;
+    verbose?: boolean;
 }
 export declare class Boot<T extends Game> {
     private _loop;

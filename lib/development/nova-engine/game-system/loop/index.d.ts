@@ -4,6 +4,10 @@ export declare enum WindowResizeEvents {
     Add = 0,
     Remove = 1,
 }
+export interface LoopMetrics {
+    memory?: boolean;
+    framerate?: boolean;
+}
 export declare class Loop<T extends Game> implements ILifecycle {
     private _running;
     private _game;
