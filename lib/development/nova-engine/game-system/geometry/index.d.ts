@@ -1,3 +1,4 @@
 import { PrimitiveBox } from './primitive-box';
-export declare type GemotryTypes = PrimitiveBox;
-export { PrimitiveBox };
+import { Sphere } from './sphere';
+export declare type GemotryTypes = PrimitiveBox | Sphere;
+export { PrimitiveBox, Sphere };

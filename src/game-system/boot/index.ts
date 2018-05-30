@@ -8,7 +8,8 @@ import { GameConstuctor, Game }                             from '../game';
 import { Loop }                                             from '../loop';
 
 export interface BootOptions {
-    debug: boolean;
+    debug?: boolean;
+    metrics?: boolean;
 }
 
 export class Boot<T extends Game> {
@@ -16,7 +17,7 @@ export class Boot<T extends Game> {
 
     private _booted: boolean = false;
 
-    constructor(GameCtr: GameConstuctor<T>) {
+    constructor(GameCtr: GameConstuctor<T>, options?: BootOptions) {
         this._loop = new Loop<T>(GameCtr);
         this._loop.awake();
 

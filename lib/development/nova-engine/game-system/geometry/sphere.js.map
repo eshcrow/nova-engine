@@ -1,0 +1,1 @@
+{"version":3,"file":"sphere.js","sourceRoot":"","sources":["../../../../../src/game-system/geometry/sphere.ts"],"names":[],"mappings":";;AAMA,+BAAyE;AAEzE;IAGI,YAAY,MAAc,EAAE,yBAAiC,EAAE,uBAA+B;QAC1F,IAAI,CAAC,SAAS,GAAG,IAAI,KAAK,CAAC,cAAc,CAAC,MAAM,EAAE,yBAAyB,EAAE,uBAAuB,CAAC,CAAC;IAC1G,CAAC;IAED,IAAI,QAAQ;QACR,OAAO,IAAI,CAAC,SAAS,CAAC;IAC1B,CAAC;CACJ;AAVD,wBAUC"}
