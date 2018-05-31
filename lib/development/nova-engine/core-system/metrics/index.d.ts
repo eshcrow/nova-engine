@@ -1,2 +1,3 @@
 import { Memory } from './memory';
-export { Memory };
+import { Framerate } from './framerate';
+export { Memory, Framerate };

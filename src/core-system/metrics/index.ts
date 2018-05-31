@@ -5,7 +5,9 @@
 */
 
 import { Memory }                                           from './memory';
+import { Framerate }                                        from './framerate';
 
 export {
-    Memory
+    Memory,
+    Framerate
 }

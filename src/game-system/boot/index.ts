@@ -4,13 +4,13 @@
 *   author: Aurélien Dupays Dexemple
 */
 
-import { GameHelpers, GameConstuctor, Game }                from '../game';
+import { GameHelpersOptions, GameConstuctor, Game }         from '../game';
 import { LoopMetrics, Loop }                                from '../loop';
 
 export interface BootOptions {
     debug?: boolean;
     metrics?: LoopMetrics;
-    helpers?: GameHelpers;
+    helpers?: GameHelpersOptions;
     verbose?: boolean;
 }
 

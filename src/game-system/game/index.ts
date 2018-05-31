@@ -15,10 +15,11 @@ import { Scene }                                            from '../scene';
 
 import * as Three                                           from 'three';
 
-export interface GameHelpers {
-    camera?: Three.CameraHelper;
-    grid?: Three.GridHelper;
-    pointLight?: Three.PointLightHelper
+export interface GameHelpersOptions {
+    camera?: boolean;
+    grid?: boolean;
+    pointLight?: boolean;
+    axes?: boolean;
 }
 
 export interface GameConstuctor<T> {
@@ -38,7 +39,7 @@ export class Game implements ILifecycle {
 
     private _paused: boolean;
 
-    constructor(helpers?: GameHelpers) {
+    constructor(helpersOptions?: GameHelpersOptions) {
         this._domTarget = document.body;
         this._devicePixelRatio = window.devicePixelRatio;
 
