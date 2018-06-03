@@ -1,6 +1,6 @@
 
 /*
-*   NovaEngine - GameSystem - Geometry - Sphere
+*   NovaEngine - GameSystem - Geometry - Plane
 *   author: Aurélien Dupays Dexemple
 */
 

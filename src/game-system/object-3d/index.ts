@@ -6,18 +6,21 @@
 import * as uuid                                            from 'uuid';
 import * as Three                                           from 'three';
 
+import { LightTypes }                                       from '../light';
 import { Mesh }                                             from '../mesh';
+
+export type Object3DInstanceType = Mesh | LightTypes;
 
 export class Object3D {
     private _id: string;
     private _name: string;
 
-    private _mesh: Mesh;
+    private _instance: Object3DInstanceType;
 
-    constructor(mesh: Mesh, name?: string) {
+    constructor(instance: Object3DInstanceType, name?: string) {
         this._id = uuid();
 
-        this._mesh = mesh;
+        this._instance = instance;
         this._name = name || `unknown-object-3d-${this._id}`;
     }
 
@@ -29,15 +32,15 @@ export class Object3D {
         return this._name;
     }
 
-    get mesh(): Mesh {
-        return this._mesh;
+    get instance(): Object3DInstanceType {
+        return this._instance;
     }
 
     get position(): Three.Vector3 {
-        return this._mesh.instance.position;
+        return this._instance.instance.position;
     }
 
     get rotation(): Three.Euler {
-        return this._mesh.instance.rotation;
+        return this._instance.instance.rotation;
     }
 }

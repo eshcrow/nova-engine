@@ -5,6 +5,7 @@ import {
     Geometry,
     Color,
     Material,
+    Light,
     Mesh,
     Object3D,
     PlayStateManager
@@ -17,6 +18,7 @@ class CubixGame extends Game {
         this.cube = null;
         this.sphere = null;
         this.plane = null;
+        this.light = null;
     }
 
     awake() {
@@ -39,9 +41,12 @@ class CubixGame extends Game {
         const planeMesh = new Mesh(planeGeo, planeMat);
         this.plane = new Object3D(planeMesh);
 
+        this.light = new Light.Ambient();
+
         this.scene.add(this.cube);
         this.scene.add(this.sphere);
         this.scene.add(this.plane);
+        this.scene.add(this.light);
     }
 
     start() {

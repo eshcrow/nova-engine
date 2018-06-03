@@ -32,6 +32,6 @@ export class Scene {
     }
 
     public add(object3d: Object3D): void {
-        this._instance.add(object3d.mesh.instance);
+        this._instance.add(object3d.instance.instance);
     }
 }

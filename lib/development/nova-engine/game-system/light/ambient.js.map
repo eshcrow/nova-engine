@@ -1,0 +1,1 @@
+{"version":3,"file":"ambient.js","sourceRoot":"","sources":["../../../../../src/game-system/light/ambient.ts"],"names":[],"mappings":";;AAMA,+BAAyE;AAIzE;IAGI,YAAY,KAAa;QACrB,IAAI,CAAC,SAAS,GAAG,IAAI,KAAK,CAAC,YAAY,CAAC,KAAK,CAAC,CAAC,CAAC,KAAK,CAAC,MAAM,EAAE,CAAC,CAAC,CAAC,QAAQ,CAAC,CAAC;IAC/E,CAAC;IAED,IAAI,QAAQ;QACR,OAAO,IAAI,CAAC,SAAS,CAAC;IAC1B,CAAC;CACJ;AAVD,0BAUC"}

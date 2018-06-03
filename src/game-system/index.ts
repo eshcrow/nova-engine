@@ -13,6 +13,8 @@ import { Color }                                            from './color';
 import * as Geometry                                        from './geometry';
 import * as Material                                        from './material';
 
+import * as Light                                           from './light';
+
 import { Mesh }                                             from './mesh';
 import { Object3D }                                         from './object-3d';
 
@@ -22,6 +24,7 @@ export {
     Color,
     Geometry,
     Material,
+    Light,
     Mesh,
     Object3D,
     PlayStateManager

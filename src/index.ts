@@ -11,6 +11,7 @@ import {
     Color,
     Geometry,
     Material,
+    Light,
     Mesh,
     Object3D,
     PlayStateManager
@@ -27,6 +28,7 @@ export {
     Color,
     Geometry,
     Material,
+    Light,
     Mesh,
     Object3D,
 
